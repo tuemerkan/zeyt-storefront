@@ -117,15 +117,12 @@ export default function Product() {
                 <Heading as="h1" className="whitespace-normal">
                   {title}
                 </Heading>
-                {vendor && (
-                  <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-                )}
               </div>
               <ProductForm />
               <div className="grid gap-4 py-4">
                 {descriptionHtml && (
                   <ProductDetail
-                    title="Product Details"
+                    title="Beschreibung"
                     content={descriptionHtml}
                   />
                 )}
@@ -148,16 +145,16 @@ export default function Product() {
           </div>
         </div>
       </Section>
-      <Suspense fallback={<Skeleton className="h-32" />}>
-        <Await
-          errorElement="There was a problem loading related products"
-          resolve={recommended}
-        >
-          {(products) => (
-            <ProductSwimlane title="Related Products" products={products} />
-          )}
-        </Await>
-      </Suspense>
+      {/*<Suspense fallback={<Skeleton className="h-32" />}>*/}
+      {/*  <Await*/}
+      {/*    errorElement="There was a problem loading related products"*/}
+      {/*    resolve={recommended}*/}
+      {/*  >*/}
+      {/*    {(products) => (*/}
+      {/*      <ProductSwimlane title="Related Products" products={products} />*/}
+      {/*    )}*/}
+      {/*  </Await>*/}
+      {/*</Suspense>*/}
     </>
   );
 }
@@ -249,7 +246,7 @@ export function ProductForm() {
                   as="span"
                   className="flex items-center justify-center gap-2"
                 >
-                  <span>Add to Cart</span> <span>·</span>{' '}
+                  <span>In den Warenkorb</span> <span>·</span>{' '}
                   <Money
                     withoutTrailingZeros
                     data={selectedVariant?.price}
@@ -265,13 +262,6 @@ export function ProductForm() {
                   )}
                 </Text>
               </AddToCartButton>
-            )}
-            {!isOutOfStock && (
-              <ShopPayButton
-                width="100%"
-                variantIds={[selectedVariant?.id]}
-                storeDomain={storeDomain}
-              />
             )}
           </div>
         )}

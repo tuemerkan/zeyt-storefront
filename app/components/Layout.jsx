@@ -227,6 +227,14 @@ function DesktopHeader({isHome, menu, openCart, title}) {
         </Link>
         <nav className="flex gap-8">
           {/* Top level menu items */}
+          <Link
+            to="/products/zeyt"
+            className={({isActive}) =>
+              isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+            }
+          >
+            shop
+          </Link>
           {(menu?.items || []).map((item) => (
             <Link
               key={item.id}
@@ -256,7 +264,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             }
             type="search"
             variant="minisearch"
-            placeholder="Search"
+            placeholder="suche"
             name="q"
           />
           <button
